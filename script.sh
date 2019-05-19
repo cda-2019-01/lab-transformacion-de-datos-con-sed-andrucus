@@ -39,10 +39,15 @@ sed -e 's/a/A/g' -e 's/c/C/g' -e 's/n/N/g' out.8 > out.10
 # Agregue ',\N' a las filas que terminan en ','
 sed -e "s/,$/,\\\N/g" out.10 > out.11
 
-#Imprime lo que no tenga \N
-grep -v '\N' out.11 > out.12
 
-cat out.11
+#cambiando 200.0 por 200,0
+sed -e 's/,200.0/,200,0/' out.11 > out.12
+
+#Imprime lo que no tenga \N
+grep -v '\N' out.11 > out.13
+
+cat out.12
+
 rm out.*
 
 
